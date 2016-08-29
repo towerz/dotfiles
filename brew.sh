@@ -1,4 +1,8 @@
 #! /bin/bash
+
+echo "Making sure sudo will work without interrupting execution"
+sudo -v
+
 echo "Setting up environment"
 which -s brew
 if [[ $? != 0 ]]; then
@@ -15,12 +19,15 @@ echo "App Store setup"
 brew install mas
 
 echo "::app installs"
-mas install 918858936 # Airmail 3
-mas install 595191960 # CopyClip
-mas install 823766827 # OneDrive
-msa install 485812721 # TweetDeck
-mas install 410628904 # Wunderlist
-mas install 497799835 # Xcode
+#mas install 918858936 # Airmail 3
+#mas install 595191960 # CopyClip
+#mas install 823766827 # OneDrive
+#msa install 485812721 # TweetDeck
+#mas install 410628904 # Wunderlist
+#mas install 497799835 # Xcode
+
+#echo "Displaying Xcode license"
+#sudo xcodebuild -license
 
 echo "Install core apps"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
@@ -45,7 +52,7 @@ brew install coreutils
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 brew install moreutils findutils
 brew install gnu-sed --with-default-names
-brew install bash bash-comletion2
+brew install bash bash-completion2
 
 # Switch to brew-installed bash as default shell
 if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
