@@ -15,19 +15,21 @@ fi
 brew update
 brew upgrade --all
 
-echo "App Store setup"
 brew install mas
 
-echo "::app installs"
-#mas install 918858936 # Airmail 3
-#mas install 595191960 # CopyClip
-#mas install 823766827 # OneDrive
-#msa install 485812721 # TweetDeck
-#mas install 410628904 # Wunderlist
-#mas install 497799835 # Xcode
+if [[ -n $APP_STORE_ACCOUNT && -n $APP_STORE_PASSWD ]]; then
+  echo "App Store setup"
+  echo "::app installs"
+  mas install 918858936 # Airmail 3
+  mas install 595191960 # CopyClip
+  mas install 823766827 # OneDrive
+  mas install 485812721 # TweetDeck
+  mas install 410628904 # Wunderlist
+  mas install 497799835 # Xcode
+fi
 
-#echo "Displaying Xcode license"
-#sudo xcodebuild -license
+echo "Displaying Xcode license"
+sudo xcodebuild -license
 
 echo "Install core apps"
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
